@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: black;
+}
+.containers {
+    width: 69% !important;
+}
+.exxen-spor {
+    font-size: 1.2rem;
+    background-color: black;
+    border: none;
+    padding: 10px 30px;
+}
+.uye-giris {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: 1px solid black;
+}
+.dropdown {
+    font-size: 1.2rem;
+}
+
+/* Üye ol */
+.uye-ol {
+    background-color: rgb(22,22,22);
+
+}
+.kayit {
+    padding: 30px 0;
+}
+
+.kayit input {
+    width: 90%;
+    padding: 10px 20px;
+    /* outline-color: yellow; */
+}
+.kayit input:focus {
+    outline: 2px solid yellow;
+}
+.kayit button {
+    width: 90%;
+    padding: 10px 20px;
+}
+
+/* cardlar */
+.card {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+/* Ekranlar ve iconlar */
+.ekranlar {
+    width: 90%;
+    margin: auto;
+}
+.resimler {
+    width: 100%;
+    justify-content: center;
+}
+.resimler img {
+    width: 163px;
+    height: 43px;
+    margin: 5px;
+}
+.fa-brands {
+    background-color: white;
+    color: black;
+    font-size: 30px;
+    margin: 5px;
+    margin-top: 30px;
+    padding: 3px;
+}
+
+.son {
+    background-color: rgb(22, 22, 22);
+    padding: 10px;
+}

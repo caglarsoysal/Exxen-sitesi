@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exxen</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/a317844617.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid bg-warning p-0">
+        <div class="container  exxen-nav containers">
+            <nav class="navbar navbar-expand-lg mb-0">
+                <div class="container-fluid mt-3 mb-2">
+                  <a class="navbar-brand" href="#"><img src="{% static 'img/logo-web.svg'%}" alt=""></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">
+                            <button class="exxen-spor text-warning text-uppercase">{{request.user}}</button>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <button class="uye-giris bg-warning">ÇIKIŞ</button>
+                        </a>
+                      </li>
+                        
+                        {% else %}
+                         <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'register' %}">
+                            <button class="exxen-spor text-warning"> Üye Ol</button>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <button class="uye-giris bg-warning">Üye Girişi</button>
+                        </a>
+                      </li> 
+                        {% endif %}
+                     
+                      <li class="nav-item dropdown mt-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-globe"></i>TR
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="#">Türkçe</a></li>
+                          <li><a class="dropdown-item" href="#">English</a></li>
+                          <li><a class="dropdown-item" href="#">Espanol</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </div>
+        {% if messages %}
+             {% for mesaj in messages %}
+                 <div class="alert alert-{{mesaj.tags}} text-center">
+                    {{mesaj}}
+                 </div>
+             {% endfor %}
+        
+        {% else %}
+        {% endif %}
+         {% block content %}
+         
+        <div class="container-fluid uye-ol mt-0">
+            <div class="container containers">
+                <form action="">
+                    <div class="row kayit">
+                        <div class="col">
+                            <input type="text" placeholder="Ad Soyad">
+                        </div>
+                        <div class="col">
+                            <input type="email" placeholder="E-Posta Adresi">
+                        </div>
+                        <div class="col">
+                            <button type="button" class="bg-warning border-0">Üye Ol</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+   
+
+    <div class="container containers">
+        <a href="">
+            <img src="{% static 'img/14gun.webp'%}" width="100%" class="mt-5" alt="">
+        </a>
+    </div>
+
+    <!-- Filmler -->
+    <div class="container">
+        <div class="row row-cols-sm-4 row-cols-2 mt-4">
+            {% for film in filmler  %}
+              <div class="col">
+                <div class="card">
+                <div class="izle-logo">
+                    <img src="{{film.resim.url}}" alt="" class="card-img-top">
+                    <img src="{% static 'img/button-detail.svg'%}" class="icon" alt="">
+                </div>
+
+                    <div class="card-body text-center">
+                        <h5 class="card-title w-100">{{film.isim}}</h5>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+
+          <!-- Ekan ve açıklamalar -->
+        <div class="ekranlar text-center mt-5">
+            <img src="{% static 'img/ekranlar.svg'%}" alt="">
+            <p class="fs-3 text-light mt-3">
+                Hemen üye ol, cepte, tablette, bilgisayarda, istediğin zaman, istediğin yerde exxen.com, Google Play, AppGallery, 
+                App Store, Apple TV ve Android TV'den izlemeye başla.
+            </p>
+
+            <div class="d-flex m-auto resimler">
+                <a href="">
+                    <img src="{% static 'img/app-store-2.svg'%}" alt="">
+                </a>
+                <a href="">
+                    <img src="{% static 'img/google-play@3x.png'%}" alt="">
+                </a>
+                <a href="">
+                    <img src="{% static 'img/huawei-app-gallery@3x.png'%}" alt="">
+                </a>
+            </div>
+
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
+
+        <div class="container-fluid  text-center my-5 son">
+            <a href="" class="text-decoration-none fs-4 text-warning">
+                Exxen Yardım Merkezi
+            </a>
+        </div>
+    </div>
+{% endblock content %}
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
